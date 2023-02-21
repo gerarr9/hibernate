@@ -18,8 +18,10 @@ public class Employee {
     private String gender;
     @Column(name = "age")
     private int age;
-    @Column(name = "city_id")
-    private Integer cityId;
+
+    @ManyToOne
+    @JoinColumn(name = "city_id")
+    private City cityId;
 
     public Employee() {
 
@@ -72,15 +74,15 @@ public class Employee {
         this.age = age;
     }
 
-    public Integer getCityId() {
+    public City getCityId() {
         return cityId;
     }
 
-    public void setCityId(Integer cityId) {
+    public void setCityId(City cityId) {
         this.cityId = cityId;
     }
 
-    public Employee(String name, String surname, String gender, int age, int cityId) {
+    public Employee(String name, String surname, String gender, int age, City cityId) {
         this.name = name;
         this.surname = surname;
         this.gender = gender;

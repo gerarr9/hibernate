@@ -1,6 +1,7 @@
 package entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "city")
@@ -10,6 +11,8 @@ public class City {
     private long id;
     @Column(name = "city_name", nullable = false)
     private String nameCity;
+    @OneToMany(mappedBy = "cityId", cascade = CascadeType.ALL)
+    private List<Employee> employees;
 
     public City(long id, String nameCity) {
         this.id = id;
@@ -36,6 +39,14 @@ public class City {
 
     public void setNameCity(String nameCity) {
         this.nameCity = nameCity;
+    }
+
+    public List<Employee> getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(List<Employee> employees) {
+        this.employees = employees;
     }
 
     @Override
